@@ -11,4 +11,12 @@ export default createGlobalStyle`
         box-sizing: border-box;
         font-family: "Josefin Sans", sans-serif;
     }
+
+    body {
+        background-color: ${p => p.theme.background};
+    }
+
+    h1 {
+        color: ${p => p.theme.font};
+    }
 `
