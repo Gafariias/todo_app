@@ -2,11 +2,16 @@ import styled from "styled-components";
 
 export const Container = styled.main`
     margin: auto;
+    padding-top: 3rem;
 
-    @media only screen and (max-width: 500px) {
+    @media only screen and (max-width: 450px) {
         background-color: red;
-        padding-top: 3rem;
         width: 90vw;
+    }
+
+    @media only screen and (min-width: 450px) {
+        background-color: red;
+        width: 425px;
     }
 `
 

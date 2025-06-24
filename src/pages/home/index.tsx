@@ -9,7 +9,7 @@ export default function Home() {
     const [backgroundImg, setBackgroundImg] = useState('')
 
     useEffect(() => {
-        if (windowWidth <= 768) {
+        if (windowWidth <= 500) {
             setBackgroundImg(theme.images.mobile)
         } else {
             setBackgroundImg(theme.images.desktop)
