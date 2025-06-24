@@ -9,7 +9,7 @@ export const backgrounds = {
         desktop_light,
         mobile_light
     },
-    mobile: {
+    dark: {
         desktop_dark,
         mobile_dark
     }

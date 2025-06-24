@@ -13,10 +13,12 @@ export default createGlobalStyle`
     }
 
     body {
-        background-color: ${p => p.theme.background};
+        background-color: ${p => p.theme.colors.background};
     }
 
     h1 {
-        color: ${p => p.theme.font};
+        color: #e4e5f1;
+        font-weight: 600;
+        margin-right: .5rem;
     }
 `

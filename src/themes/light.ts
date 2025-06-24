@@ -1,6 +1,16 @@
+import desktop from "../assets/images/bg-desktop-light.jpg"
+import mobile from "../assets/images/bg-mobile-light.jpg"
+
 export const lightTheme = {
-    background: "#fafafa",
-    font: "#161722",
-    elements: "#e4e5f1",
-    font_highlight: "#484b6a"
+    title: "light",
+    colors: {
+        background: "#fafafa",
+        font: "#161722",
+        elements: "#e4e5f1",
+        font_highlight: "#484b6a"
+    },
+    images: {
+        desktop,
+        mobile
+    }
 }
