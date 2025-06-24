@@ -2,11 +2,22 @@ import { useEffect, useState } from "react";
 import ThemeSwitcher from "../../components/ThemeSwitcher";
 import { BackgroundImage, Container, Header, Title } from "./styles";
 import { useTheme } from "styled-components";
+import InputItem from "../../components/inputItem";
+
+interface newItemDataTS {
+    title: string,
+    completed: boolean
+}
 
 export default function Home() {
     const theme = useTheme()
+    const [newItemData, setNewItemData] = useState({title: "", completed: false})
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [backgroundImg, setBackgroundImg] = useState('')
+
+    const handleNewItemData = (data: newItemDataTS) => {
+        setNewItemData(data)
+    }
 
     useEffect(() => {
         if (windowWidth <= 500) {
@@ -45,6 +56,7 @@ export default function Home() {
                     <ThemeSwitcher />
                 </Header>
 
+                <InputItem onSendData={handleNewItemData}/>
                 
             </Container>
         </>
