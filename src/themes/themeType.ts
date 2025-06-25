@@ -5,7 +5,8 @@ export type themeTS = {
         font: string;
         elements: string;
         font_highlight: string;
-        element_highlight: string
+        element_highlight: string,
+        checkbox_highlight: string
     },
     images: {
         desktop: string;

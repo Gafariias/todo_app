@@ -9,7 +9,8 @@ export const darkTheme = {
         font: "#e4e5f1",
         elements: "#25273c",
         font_highlight: "#4d5066",
-        element_highlight: "#393a4c"
+        element_highlight: "#393a4c",
+        checkbox_highlight: "#8B69C1"
     },
     images: {
         desktop,

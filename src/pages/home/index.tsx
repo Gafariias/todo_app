@@ -1,10 +1,46 @@
 import { useEffect, useState } from "react";
-import ThemeSwitcher from "../../components/ThemeSwitcher";
-import { BackgroundImage, Container, FiltersContainer, Header, ItensContainer, ItensFooter, Title } from "./styles";
 import { useTheme } from "styled-components";
+
+// Elements
+import { 
+    BackgroundImage, 
+    Container, 
+    FiltersContainer, 
+    Header, 
+    ItensContainer, 
+    ItensFooter, 
+    Title,
+    Footer,
+    PersonalInfo,
+    PersonalLinks
+} from "./styles";
+
+// Components
+import ThemeSwitcher from "../../components/ThemeSwitcher";
 import InputItem from "../../components/inputItem";
-import Card from "../../components/card";
 import itens from "../../data/data.json";
+
+// Drag & Drop
+import {
+  DndContext,
+  closestCenter,
+  PointerSensor,
+  useSensor,
+  useSensors,
+  TouchSensor,
+} from '@dnd-kit/core';
+
+import type { DragEndEvent } from '@dnd-kit/core';
+
+import {
+  arrayMove,
+  SortableContext,
+  verticalListSortingStrategy,
+} from '@dnd-kit/sortable';
+import SortableCard from "../../components/sortableCard";
+import GitHub from "../../assets/icons/Github";
+import Instagram from "../../assets/icons/Instagram";
+import FrontEndMentor from "../../assets/icons/FrontEndMentor";
 
 interface newItemDataTS {
   id: string;
@@ -18,20 +54,32 @@ export default function Home() {
     const [filter, setFilter] = useState<FilterType>("all");
     const [remainingCount, setRemainingCount] = useState(0);
     const [itensData, setItensData] = useState<newItemDataTS[]>(itens);
-    const theme = useTheme();
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [backgroundImg, setBackgroundImg] = useState("");
-
+    const [isTouchDevice, setIsTouchDevice] = useState(false);
+    const theme = useTheme();
+    
     const getFilteredItems = () => {
         switch (filter) {
             case "active":
-            return itensData.filter(item => !item.completed);
-            case "completed":
-            return itensData.filter(item => item.completed);
-            default:
-            return itensData;
+                return itensData.filter(item => !item.completed);
+                case "completed":
+                    return itensData.filter(item => item.completed);
+                    default:
+                        return itensData;
+                    }
+                };
+                
+    const handleDragEnd = (e: DragEndEvent) => {
+        const {active, over} = e
+
+        if (active.id !== over?.id) {
+            const oldIndex = itensData.findIndex(item => item.id === active.id)
+            const newIndex = itensData.findIndex(item => item?.id === over?.id )
+
+            setItensData((items) => arrayMove(items, oldIndex, newIndex))
         }
-    };
+    }
 
     const handleNewItemData = (data: newItemDataTS) => {
         setItensData((prev) => [...prev, data]);
@@ -55,6 +103,9 @@ export default function Home() {
         };  
 
     useEffect(() => {
+        const hasTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        setIsTouchDevice(hasTouch)
+
         const handleResize = () => {
         setWindowWidth(window.innerWidth);
         };
@@ -79,54 +130,97 @@ export default function Home() {
         setRemainingCount(pendentes);
     }, [itensData]);
 
+
+    const sensors = useSensors(
+        isTouchDevice
+        ? useSensor(TouchSensor, {
+            activationConstraint: {
+            delay: 200,
+            tolerance: 5,
+            },
+        })
+        : useSensor(PointerSensor, {
+            activationConstraint: {
+            distance: 5,
+            },
+        })
+    );
+
     return (
         <>
-        <BackgroundImage src={backgroundImg} />
+            <BackgroundImage src={backgroundImg} />
 
-        <Container>
-            <Header>
-            <Title>
-                <h1>T</h1>
-                <h1>O</h1>
-                <h1>D</h1>
-                <h1>O</h1>
-            </Title>
+            <Container>
+                <Header>
+                    <Title>
+                        <h1>T</h1>
+                        <h1>O</h1>
+                        <h1>D</h1>
+                        <h1>O</h1>
+                    </Title>
 
-            <ThemeSwitcher />
-            </Header>
+                    <ThemeSwitcher />
+                </Header>
 
-            <InputItem onSendData={handleNewItemData} />
+                <InputItem onSendData={handleNewItemData} />
 
-            <ItensContainer>
-                {getFilteredItems().map((item) => (
-                    <Card
-                    key={item.id}
-                    id={item.id}
-                    title={item.title}
-                    completed={item.completed}
-                    onRemove={handleRemoveItem}
-                    onToggleComplete={handleToggleComplete}
-                    />
-                ))}
+                <ItensContainer>
+                    <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+                        <SortableContext items={itensData.map(item => item.id)} strategy={verticalListSortingStrategy}>
+                            {getFilteredItems().map((item) => (
+                                <SortableCard
+                                    key={item.id}
+                                    id={item.id}
+                                    title={item.title}
+                                    completed={item.completed}
+                                    onRemove={handleRemoveItem}
+                                    onToggleComplete={handleToggleComplete}
+                                />
+                            ))}
+                        </SortableContext>
+                    </DndContext>
 
-            <ItensFooter>
-                <span>
-                {remainingCount} {remainingCount === 1 ? "item" : "itens"} left
-                </span>
+                    <ItensFooter>
+                        <span>
+                            {remainingCount} {remainingCount === 1 ? "item" : "itens"} left
+                        </span>
 
-                <button onClick={handleClearCompleted}>
-                <span>Clear Completed</span>
-                </button>
-            </ItensFooter>
-            </ItensContainer>
+                        <button onClick={handleClearCompleted}>
+                            <span>Clear Completed</span>
+                        </button>
+                    </ItensFooter>
+                </ItensContainer>
 
-            <FiltersContainer>
-                <button onClick={() => setFilter("all")} className={filter === "all" ? "active" : ""}>All</button>
-                <button onClick={() => setFilter("active")} className={filter === "active" ? "active" : ""}>Remaining</button>
-                <button onClick={() => setFilter("completed")} className={filter === "completed" ? "active" : ""}>Completed</button>
-            </FiltersContainer>
-        </Container>
+                <FiltersContainer>
+                    <button onClick={() => setFilter("all")} className={filter === "all" ? "active" : ""}>All</button>
+                    <button onClick={() => setFilter("active")} className={filter === "active" ? "active" : ""}>Remaining</button>
+                    <button onClick={() => setFilter("completed")} className={filter === "completed" ? "active" : ""}>Completed</button>
+                </FiltersContainer>
 
+                <h2>Drag & Drop to reorder list</h2>
+            </Container>
+
+            <Footer>
+                <PersonalInfo>
+                    <p>Developed by Gabriel Farias</p>
+                    <p>© 2025</p>
+                    <p>Made using React + TypeScript + Styled Components</p>
+                </PersonalInfo>
+
+                <PersonalLinks>
+                    <a href="https://github.com/Gafariias" target="_blank">
+                        <GitHub />
+                    </a>
+                    
+                    <a href="https://www.instagram.com/gafarias._" target="_blank">
+                        <Instagram />
+                    </a>
+                    
+                    {/* <a href="">
+                        <img src="" alt="" />
+                    </a> */}
+                </PersonalLinks>
+            </Footer>
         </>
     );
 }
