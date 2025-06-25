@@ -5,6 +5,7 @@ export const Container = styled.div<{checked: boolean}>`
     height: 3rem;
     display: flex;
     border-bottom: 1px solid ${p => p.theme.colors.element_highlight};
+    cursor: grab;
 
     p {
         display: flex;
