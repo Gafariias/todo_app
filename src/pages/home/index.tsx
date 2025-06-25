@@ -18,7 +18,7 @@ import {
 // Components
 import ThemeSwitcher from "../../components/ThemeSwitcher";
 import InputItem from "../../components/inputItem";
-import itens from "../../data/data.json";
+import initialData from "../../data/data.json";
 
 // Drag & Drop
 import {
@@ -40,7 +40,7 @@ import {
 import SortableCard from "../../components/sortableCard";
 import GitHub from "../../assets/icons/Github";
 import Instagram from "../../assets/icons/Instagram";
-import FrontEndMentor from "../../assets/icons/FrontEndMentor";
+import { usePersistentState } from "../../hooks/usePersistentState";
 
 interface newItemDataTS {
   id: string;
@@ -53,7 +53,7 @@ type FilterType = "all" | "active" | "completed";
 export default function Home() {
     const [filter, setFilter] = useState<FilterType>("all");
     const [remainingCount, setRemainingCount] = useState(0);
-    const [itensData, setItensData] = useState<newItemDataTS[]>(itens);
+    const [itensData, setItensData] = usePersistentState<newItemDataTS[]>("todos-itens", initialData);
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [backgroundImg, setBackgroundImg] = useState("");
     const [isTouchDevice, setIsTouchDevice] = useState(false);
