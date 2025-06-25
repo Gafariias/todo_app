@@ -172,7 +172,7 @@ Error generating stack: `+n.message+`
     a {
         margin: .5rem;
     }
-`,zy="/todo-app/assets/bg-desktop-dark-DzAvO98h.jpg",My="/todo-app/assets/bg-mobile-dark-DBhZPurk.jpg",Cy={title:"dark",colors:{background:"#161722",font:"#e4e5f1",elements:"#25273c",font_highlight:"#4d5066",element_highlight:"#393a4c",checkbox_highlight:"#8B69C1"},images:{desktop:zy,mobile:My}},_y="/todo-app/assets/bg-desktop-light-BIdKokTn.jpg",Ny="/todo-app/assets/bg-mobile-light-eXTHhUPU.jpg",wy={title:"light",colors:{background:"#fafafa",font:"#161722",elements:"#e4e5f1",font_highlight:"#484b6a",element_highlight:"#d2d3db",checkbox_highlight:"#71C2FD"},images:{desktop:_y,mobile:Ny}};function Ov(a,c){const[r,f]=O.useState(()=>{try{const s=localStorage.getItem(a);return s?JSON.parse(s):c}catch{return c}});return O.useEffect(()=>{try{localStorage.setItem(a,JSON.stringify(r))}catch{console.error("There was an error reaching Local Storage")}},[a,r]),[r,f]}function Uy(){const[a,c]=Ov("theme","light");return[a,()=>{c(f=>f==="light"?"dark":"light")}]}const zv=O.createContext(void 0),Hy=()=>{const a=O.useContext(zv);if(!a)throw new Error("useTheme deve ser usado dentro de ThemeProvider");return a};function jy({children:a}){const[c,r]=Uy(),f=c==="dark",s=f?Cy:wy;return V.jsx(zv.Provider,{value:{toggleTheme:r,isDark:f},children:V.jsx(vy,{theme:s,children:a})})}const By=le.button`
+`,zy="/todo_app/assets/bg-desktop-dark-DzAvO98h.jpg",My="/todo_app/assets/bg-mobile-dark-DBhZPurk.jpg",Cy={title:"dark",colors:{background:"#161722",font:"#e4e5f1",elements:"#25273c",font_highlight:"#4d5066",element_highlight:"#393a4c",checkbox_highlight:"#8B69C1"},images:{desktop:zy,mobile:My}},_y="/todo_app/assets/bg-desktop-light-BIdKokTn.jpg",Ny="/todo_app/assets/bg-mobile-light-eXTHhUPU.jpg",wy={title:"light",colors:{background:"#fafafa",font:"#161722",elements:"#e4e5f1",font_highlight:"#484b6a",element_highlight:"#d2d3db",checkbox_highlight:"#71C2FD"},images:{desktop:_y,mobile:Ny}};function Ov(a,c){const[r,f]=O.useState(()=>{try{const s=localStorage.getItem(a);return s?JSON.parse(s):c}catch{return c}});return O.useEffect(()=>{try{localStorage.setItem(a,JSON.stringify(r))}catch{console.error("There was an error reaching Local Storage")}},[a,r]),[r,f]}function Uy(){const[a,c]=Ov("theme","light");return[a,()=>{c(f=>f==="light"?"dark":"light")}]}const zv=O.createContext(void 0),Hy=()=>{const a=O.useContext(zv);if(!a)throw new Error("useTheme deve ser usado dentro de ThemeProvider");return a};function jy({children:a}){const[c,r]=Uy(),f=c==="dark",s=f?Cy:wy;return V.jsx(zv.Provider,{value:{toggleTheme:r,isDark:f},children:V.jsx(vy,{theme:s,children:a})})}const By=le.button`
     background: none;
     border: none;
     cursor: pointer;
@@ -237,6 +237,7 @@ Error generating stack: `+n.message+`
     height: 3rem;
     display: flex;
     border-bottom: 1px solid ${a=>a.theme.colors.element_highlight};
+    cursor: grab;
 
     p {
         display: flex;
