@@ -8,7 +8,7 @@
 
     /* Bundler mode */
     "composite": true,
-    "emitDeclarationOnly": false,
+    "emitDeclarationOnly": true,
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
