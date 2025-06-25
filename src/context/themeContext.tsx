@@ -3,6 +3,7 @@ import type { themeTS } from "../themes/themeType";
 import { darkTheme } from "../themes/dark";
 import { lightTheme } from "../themes/light";
 import { ThemeProvider as StyledProvider} from "styled-components";
+import { useThemePersistence, type ThemeName } from "../hooks/useThemePersistence";
 
 interface themeContextTS {
     toggleTheme: () => void;
@@ -19,9 +20,9 @@ export const useTheme = () => {
 };
 
 export default function CustomThemeProvider({children}: {children: ReactNode}) {
-    const [isDark, setIsDark] = useState(false)
-    const toggleTheme = () => setIsDark(!isDark)
-    const theme: themeTS = isDark ? darkTheme : lightTheme
+    const [themeName, toggleTheme] = useThemePersistence()
+    const isDark = themeName === "dark";
+    const theme = isDark ? darkTheme : lightTheme;
 
     return(
         <ThemeContext.Provider value={{toggleTheme, isDark}}>
