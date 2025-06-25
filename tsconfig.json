@@ -5,5 +5,16 @@
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
-  ]
+  ],
+  "compilerOptions": {
+    "target": "ES2022",             
+    "lib": ["DOM", "ES2023"],        
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "esModuleInterop": true,         
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true  
+  }
 }
