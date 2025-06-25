@@ -1,0 +1,32 @@
+[
+    {
+        "id": "f0e925d5-48cf-4cf4-ac9b-51d3ded5b839",
+        "title": "Complete online JavaScript course",
+        "completed": true
+    },
+    {
+        "id": "159c59fd-faef-486f-8971-a012e78b9c21",
+        "title": "Jog Around the park 3x",
+        "completed": false
+    },
+    {
+        "id": "15bcad33-b0bd-41f8-a9e9-55b342acf0c5",
+        "title": "10 minute meditation",
+        "completed": false
+    },
+    {
+        "id": "c278b25e-7ee0-4704-9db7-731b89cd06e4",
+        "title": "Read for 1 hour",
+        "completed": false
+    },
+    {
+        "id": "99c510bf-fcca-4f77-b94c-644c68fcd57b",
+        "title": "Pick up groceries",
+        "completed": false
+    },
+    {
+        "id": "5990829f-879d-4fd1-8ab9-0ef5ff4e3198",
+        "title": "Complete todo app on Front End Mentor",
+        "completed": false
+    }
+]
