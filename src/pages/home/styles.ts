@@ -3,6 +3,9 @@ import styled from "styled-components";
 export const Container = styled.main`
     margin: auto;
     padding-top: 3rem;
+    width: 100%;
+    max-width: 100vw;  
+    overflow-x: hidden;   
 
     @media only screen and (max-width: 450px) {
         width: 90vw;
@@ -14,9 +17,10 @@ export const Container = styled.main`
 `
 
 export const BackgroundImage = styled.img`
-    width: 100vw;
-    position: fixed;
+    position: absolute;
+    width: 100%;
     z-index: -20;
+    left: 0;
     top: 0;
     filter: brightness(80%);
 `
@@ -37,9 +41,13 @@ export const ItensContainer = styled.section`
     background-color: ${p => p.theme.colors.elements};
     margin-top: 1rem;
     border-radius: .5rem;
+    box-shadow: -1px 1px 5px rgba(0,0,0,0.3);
+    width: 100%;
+    max-width: 100vw; 
+    overflow-x: hidden; 
 `
 
-export const ItensFooter = styled.footer`
+export const ItensFooter = styled.section`
     width: 100%;
     height: 3rem;
     display: flex;
@@ -68,7 +76,7 @@ export const ItensFooter = styled.footer`
 `
 
 export const FiltersContainer = styled.section`
-    margin-top: 1rem;
+    margin: 1rem 0;
     width: 100%;
     height: 3rem;
     background-color: ${p => p.theme.colors.elements};
@@ -77,6 +85,7 @@ export const FiltersContainer = styled.section`
     justify-content: space-between;
     align-items: center;
     padding: 0 20%;
+    box-shadow: -1px 1px 5px rgba(0,0,0,0.3);
 
     button {
         background: none;
@@ -92,7 +101,31 @@ export const FiltersContainer = styled.section`
         }
 
         &:hover {
-            filter: brightness(80%);
+            filter: ${p => p.theme.colors.font};
         }
+    }
+`
+
+export const Footer = styled.footer`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 2rem 0 1rem;
+    width: 100vw;
+    height: 5rem;
+    border-top: 1px solid ${p => p.theme.colors.element_highlight};
+`
+
+export const PersonalInfo = styled.div`
+    p {
+        color: ${p => p.theme.colors.font_highlight};
+        font-size: .8rem;
+    }
+`
+
+export const PersonalLinks = styled.div`
+    a {
+        margin: .5rem;
     }
 `

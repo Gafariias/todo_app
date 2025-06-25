@@ -1,8 +1,6 @@
-import { useTheme } from "styled-components";
 import { Container, CustomCheckbox, CustomCheckboxContainer, RemoveItemContainer } from "./styles";
 import Check from "../../assets/icons/Check";
 import Cross from "../../assets/icons/Cross";
-import type { ChangeEvent } from "react";
 
 interface CardTS {
   id: string;
@@ -13,8 +11,6 @@ interface CardTS {
 }
 
 export default function Card(p: CardTS) {
-  const theme = useTheme();
-
   return (
     <Container checked={p.completed}>
       <CustomCheckboxContainer>

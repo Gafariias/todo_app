@@ -52,6 +52,7 @@ export const CustomCheckboxContainer = styled.div`
     input {
         position: absolute;
         opacity: 0;
+        pointer-events: none;
     }
 `
 
@@ -64,6 +65,11 @@ export const CustomCheckbox = styled.label<{checked: boolean}>`
     height: 1.2rem;
     border-radius: 100%;
     border: 1px solid ${p => p.theme.colors.element_highlight};
+    cursor: pointer;
 
     background: ${p => p.checked ? "linear-gradient(#71C2FD, #8B69C1)": ""};
+
+    &:hover {
+        background-color: ${p => p.theme.colors.checkbox_highlight};
+    }
 `
