@@ -1,9 +1,8 @@
-import { createContext, useContext, useState, type ReactNode } from "react";
-import type { themeTS } from "../themes/themeType";
+import { createContext, useContext, type ReactNode } from "react";
 import { darkTheme } from "../themes/dark";
 import { lightTheme } from "../themes/light";
 import { ThemeProvider as StyledProvider} from "styled-components";
-import { useThemePersistence, type ThemeName } from "../hooks/useThemePersistence";
+import { useThemePersistence} from "../hooks/useThemePersistence";
 
 interface themeContextTS {
     toggleTheme: () => void;
