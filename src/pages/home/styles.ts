@@ -115,12 +115,27 @@ export const Footer = styled.footer`
     width: 100vw;
     height: 5rem;
     border-top: 1px solid ${p => p.theme.colors.element_highlight};
+
+    @media only screen and (max-width: 500px) {
+        flex-direction: column;
+        height: auto;
+        padding: 1rem 2rem 1rem 1rem;
+    }
 `
 
 export const PersonalInfo = styled.div`
     p {
         color: ${p => p.theme.colors.font_highlight};
         font-size: .8rem;
+    }
+
+    @media only screen and (max-width: 500px) {
+        margin-bottom: 1rem;
+        text-align: center;
+
+        p {
+            text-align: center;
+        }
     }
 `
 
