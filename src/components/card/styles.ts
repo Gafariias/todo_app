@@ -4,6 +4,7 @@ export const Container = styled.div<{checked: boolean}>`
     width: 100%;
     height: 3rem;
     z-index: 50;
+    border-radius: .5rem .5rem 0 0;
     display: flex;
     border-bottom: 1px solid ${p => p.theme.colors.element_highlight};
     background-color: ${p => p.theme.colors.elements};

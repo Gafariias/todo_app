@@ -166,20 +166,23 @@ export default function Home() {
                 <InputItem onSendData={handleNewItemData} />
 
                 <ItensContainer>
-                    <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd} modifiers={[restrictToVerticalAxis, restrictToParentElement]}>
-                        <SortableContext items={itensData.map(item => item.id)} strategy={verticalListSortingStrategy}>
-                            {getFilteredItems().map((item) => (
-                                <SortableCard
-                                    key={item.id}
-                                    id={item.id}
-                                    title={item.title}
-                                    completed={item.completed}
-                                    onRemove={handleRemoveItem}
-                                    onToggleComplete={handleToggleComplete}
-                                />
-                            ))}
-                        </SortableContext>
-                    </DndContext>
+                    <div>
+                        <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd} modifiers={[restrictToVerticalAxis, restrictToParentElement]}>
+                            <SortableContext items={itensData.map(item => item.id)} strategy={verticalListSortingStrategy}>
+                                {getFilteredItems().map((item) => (
+                                    <SortableCard
+                                        key={item.id}
+                                        id={item.id}
+                                        title={item.title}
+                                        completed={item.completed}
+                                        onRemove={handleRemoveItem}
+                                        onToggleComplete={handleToggleComplete}
+                                    />
+                                ))}
+                            </SortableContext>
+                        </DndContext>
+
+                    </div>
 
                     <ItensFooter>
                         <span>
