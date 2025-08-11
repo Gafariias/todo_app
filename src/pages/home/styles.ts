@@ -44,7 +44,6 @@ export const ItensContainer = styled.section`
     box-shadow: -1px 1px 5px rgba(0,0,0,0.3);
     width: 100%;
     max-width: 100vw; 
-    overflow-x: hidden; 
 `
 
 export const ItensFooter = styled.section`

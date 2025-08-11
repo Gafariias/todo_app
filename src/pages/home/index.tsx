@@ -41,6 +41,7 @@ import SortableCard from "../../components/sortableCard";
 import GitHub from "../../assets/icons/Github";
 import Instagram from "../../assets/icons/Instagram";
 import { usePersistentState } from "../../hooks/usePersistentState";
+import { restrictToParentElement, restrictToVerticalAxis } from "@dnd-kit/modifiers";
 
 interface newItemDataTS {
   id: string;
@@ -165,7 +166,7 @@ export default function Home() {
                 <InputItem onSendData={handleNewItemData} />
 
                 <ItensContainer>
-                    <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+                    <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd} modifiers={[restrictToVerticalAxis, restrictToParentElement]}>
                         <SortableContext items={itensData.map(item => item.id)} strategy={verticalListSortingStrategy}>
                             {getFilteredItems().map((item) => (
                                 <SortableCard
