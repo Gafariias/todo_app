@@ -47,7 +47,7 @@ Users should be able to:
 - [React](https://reactjs.org/) - JS library
 - [Typescript](https://www.typescriptlang.org/) - JS Superset
 - [Styled Components](https://styled-components.com/) - For styles
-- [dnd-kit][https://dndkit.com/] - for Drag & Drop functionality
+- [dnd kit](https://dndkit.com/) - for Drag & Drop functionality
 
 ### Folder Structure
 
