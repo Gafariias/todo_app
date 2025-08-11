@@ -181,7 +181,6 @@ export default function Home() {
                                 ))}
                             </SortableContext>
                         </DndContext>
-
                     </div>
 
                     <ItensFooter>

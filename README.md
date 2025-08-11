@@ -1,54 +1,99 @@
-# React + TypeScript + Vite
+# Frontend Mentor - Todo app solution
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a solution to the [Todo app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
 
-Currently, two official plugins are available:
+## Table of contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [Folder structure](#folder-structure)
+- [Getting started](#getting-started)
+  - [Cloning](#cloning-repository)
+  - [Ínstalling dependencies](#instaling-dependencies)
+  - [Running the project](#running-the-project)
+  - [Contributing](#contributing)
+- [License](#license)
+- [Author](#author)
 
-## Expanding the ESLint configuration
+## Overview
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### The challenge
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+Users should be able to:
+
+- View the optimal layout for the app depending on their device's screen size
+- See hover states for all interactive elements on the page
+- Add new todos to the list
+- Mark todos as complete
+- Delete todos from the list
+- Filter by all/active/complete todos
+- Clear all completed todos
+- Toggle light and dark mode
+- Drag and drop to reorder items on the list
+
+### Links
+
+- Repository: [Github](https://github.com/Gafariias/todo_app)
+- Live Site URL: [TODO App](https://gafariias.github.io/todo_app/)
+
+## My process
+
+### Built with
+
+- Mobile First
+- [React](https://reactjs.org/) - JS library
+- [Typescript](https://www.typescriptlang.org/) - JS Superset
+- [Styled Components](https://styled-components.com/) - For styles
+- [dnd-kit][https://dndkit.com/] - for Drag & Drop functionality
+
+### Folder Structure
+
+```bash
+src/
+  ├── assets/         # Images and icons
+  ├── components/     # Reusable components
+  ├── context/        # Theme context
+  ├── data/           # Pre-made itens
+  ├── hooks/          # Custom Hooks
+  ├── pages/          # Application pages
+  ├── styles/         # Global Styles
+  ├── themes/         # Themes Datas
+  ├── types/          # Global Types
+  ├── App.tsx         # Root Component
+  └── main.tsx        # Entry Point
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+## Getting started
+### Cloning repository
+```bash
+git clone https://github.com/seu-usuario/nome-do-projeto.git
 ```
+
+### Instaling dependencies
+```bash
+npm install
+```
+
+### Running the project
+```bash
+npm run dev
+```
+### Contributing
+1. Fork the project
+2. Create a feature branch (git checkout -b feature/your-feature)
+3. Commit your changes (git commit -m 'feat: add new feature')
+4. Push to your branch (git push origin feature/your-feature)
+5. Open a Pull Request
+
+## License
+This project is licensed under the MIT License.
+See the [LICENSE](./LICENSE) file for details.
+
+## Author
+
+- Website - [Add your name here](https://www.your-site.com)
+- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
+- Twitter - [@yourusername](https://www.twitter.com/yourusername)
